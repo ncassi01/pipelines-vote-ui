@@ -3,8 +3,7 @@ FROM registry.access.redhat.com/ubi8/python-38
 
 # Install our requirements.txt
 ADD requirements.txt /opt/app-root/src/requirements.txt
-RUN python -m pip install Flask
-RUN pip install -r requirements.txt
+RUN pip --trusted-host=pypi.python.org --trusted-host=pypi.org --trusted-host=files.pythonhosted.org install -r requirements.txt
 
 # Copy our code from the current folder to /app inside the container
 ADD . /opt/app-root/src
